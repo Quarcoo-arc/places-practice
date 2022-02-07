@@ -28,5 +28,10 @@ export class Modal {
     }
   }
 
-  hide() {}
+  hide() {
+    const modalEl = document.querySelector(".modal");
+    const backdrop = document.querySelector(".backdrop");
+    backdrop.remove();
+    modalEl.remove();
+  }
 }
