@@ -1,12 +1,21 @@
 import { Modal } from "./UI/Modal";
+import { Map } from "./UI/Map";
 
 class PlaceFinder {
   constructor() {
     const addressForm = document.querySelector("form");
     const locateUserBtn = document.getElementById("locate-btn");
 
-    locateUserBtn.addEventListener("click", this.locateUserHandler);
-    addressForm.addEventListener("submit", this.findAddressHandler);
+    locateUserBtn.addEventListener("click", this.locateUserHandler.bind(this));
+    addressForm.addEventListener("submit", this.findAddressHandler.bind(this));
+  }
+
+  selectPlace(coordinates) {
+    if (this.map) {
+      this.map.render.call(this, coordinates);
+    } else {
+      this.map = new Map(coordinates);
+    }
   }
 
   locateUserHandler() {
@@ -31,6 +40,7 @@ class PlaceFinder {
           lng: successResult.coords.longitude + Math.random() * 50,
         };
         console.log(coordinates);
+        this.selectPlace(coordinates); //show map
       },
       (error) => {
         alert(
