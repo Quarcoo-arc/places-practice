@@ -31,6 +31,8 @@ export class Modal {
   hide() {
     document.body.removeChild(this.modalEl);
     document.body.removeChild(this.backdropEl);
+    this.modalEl = null;
+    this.backdropEl = null;
     //   const modalEl = document.querySelector(".modal");
     //   const backdrop = document.querySelector(".backdrop");
     //   backdrop.remove();
