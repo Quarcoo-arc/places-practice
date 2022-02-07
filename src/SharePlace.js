@@ -11,7 +11,7 @@ class PlaceFinder {
     const locateUserBtn = document.getElementById("locate-btn");
     this.shareBtn = document.getElementById("share-btn");
 
-    // this.shareBtn.addEventListener("click");
+    this.shareBtn.addEventListener("click", this.sharePlaceHandler.bind(this));
     locateUserBtn.addEventListener("click", this.locateUserHandler.bind(this));
     addressForm.addEventListener("submit", this.findAddressHandler.bind(this));
   }
@@ -91,6 +91,22 @@ class PlaceFinder {
       alert(error.message);
     }
     modal.hide();
+  }
+  sharePlaceHandler(event) {
+    const sharedLinkInputEl = document.getElementById("share-link");
+    if (!navigator.clipboard) {
+      sharedLinkInputEl.select();
+      return;
+    }
+    navigator.clipboard
+      .writeText(sharedLinkInputEl.value)
+      .then(() => {
+        alert("Copied into clipboard!");
+      })
+      .catch((err) => {
+        console.log(err);
+        sharedLinkInputEl.select();
+      });
   }
 }
 
