@@ -1,4 +1,4 @@
-class Modal {
+export class Modal {
   constructor(contentId, fallbackText) {
     this.fallbackText = fallbackText;
     this.contentId = contentId;
@@ -8,10 +8,16 @@ class Modal {
 
   show() {
     if ("content" in document.createElement("template")) {
-      const modalElements = document.importNode(this.modalTemplateEl, true);
+      const modalElements = document.importNode(
+        this.modalTemplateEl.content,
+        true
+      );
       const modalEl = modalElements.querySelector(".modal");
       const backdropEl = modalElements.querySelector(".backdrop");
-      const contentEl = document.importNode(this.contentTemplateEl, true);
+      const contentEl = document.importNode(
+        this.contentTemplateEl.content,
+        true
+      );
 
       modalEl.appendChild(contentEl);
 
