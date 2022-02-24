@@ -6,6 +6,7 @@ module.exports = {
   mode: "development",
   entry: {
     SharePlace: "./src/SharePlace.js",
+    GoogleAPI: "./src/GoogleAPI.js",
     MyPlace: "./src/MyPlace.js",
   },
   output: {

@@ -5,11 +5,12 @@ const Dotenv = require("dotenv-webpack");
 module.exports = {
   mode: "production",
   entry: {
-    "share-place": "./src/SharePlace.js",
-    "my-place": "./src/MyPlace.js",
+    SharePlace: "./src/SharePlace.js",
+    GoogleAPI: "./src/GoogleAPI.js",
+    MyPlace: "./src/MyPlace.js",
   },
   output: {
-    filename: "[name].[contenthash].js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist", "assets", "scripts"),
     publicPath: "dist/assets/scripts/",
   },

@@ -32,12 +32,7 @@ export class Modal {
     document.body.removeChild(this.modalEl);
     document.body.removeChild(this.backdropEl);
 
-    console.log(this.modalEl instanceof Node, this.backdropEl instanceof Node);
     this.modalEl = null;
     this.backdropEl = null;
-    //   const modalEl = document.querySelector(".modal");
-    //   const backdrop = document.querySelector(".backdrop");
-    //   backdrop.remove();
-    //   modalEl.remove();
   }
 }

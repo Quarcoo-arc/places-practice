@@ -2,7 +2,6 @@ export async function getAddressFromCoords(coords) {
   const response = await fetch(
     `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${process.env.API_KEY}`
   );
-  console.log(process.env.API_KEY);
   if (!response.ok) {
     throw new Error("Failed to fetch address. Please try again!");
   }

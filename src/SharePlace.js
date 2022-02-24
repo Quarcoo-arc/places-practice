@@ -1,3 +1,7 @@
+const script = document.createElement("script");
+script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.API_KEY}`;
+document.head.insertBefore(script, document.head.querySelector("script"));
+
 import { Modal } from "./UI/Modal";
 import { Map } from "./UI/Map";
 import {
@@ -51,7 +55,6 @@ class PlaceFinder {
         };
         try {
           const address = await getAddressFromCoords(coordinates);
-          console.log(coordinates);
           this.selectPlace(coordinates, address); //show map
         } catch (error) {
           alert(error.message);
@@ -82,15 +85,14 @@ class PlaceFinder {
 
     try {
       const coordinates = await getCoordsFromFunction(address);
-      if (await coordinates) {
-        modal.hide();
+      modal.hide();
+
+      if (coordinates) {
         this.selectPlace(coordinates, address);
-        console.log(coordinates);
       }
     } catch (error) {
       alert(error.message);
     }
-    modal.hide();
   }
   sharePlaceHandler(event) {
     const sharedLinkInputEl = document.getElementById("share-link");
@@ -104,7 +106,6 @@ class PlaceFinder {
         alert("Copied into clipboard!");
       })
       .catch((err) => {
-        console.log(err);
         sharedLinkInputEl.select();
       });
   }
